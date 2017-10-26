@@ -1,0 +1,37 @@
+.official-schedules-table tr th:last-child,
+.official-schedules-table tr td:last-child,
+.sections-table tr th:last-child,
+.sections-table tr td:last-child,
+.official-classes-table tr th:last-child,
+.official-classes-table tr td:last-child {
+    min-width: 100px;
+    text-align: center;
+}
+
+.enroll-subjects-table tr th:first-child,
+.enroll-subjects-table tr td:first-child {
+    text-align: center;
+}
+
+th {
+    font-weight: 600;
+    background-color: #787878;
+    color: #f3f3f4;
+}
+
+hr.line-dashed {
+    border: .5px dashed #f3f3f4 !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Class | Scheduling</title>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/index.css" rel="stylesheet">
+    <!-- Global styles -->
+    <link href="css/global/buttons.css" rel="stylesheet">
+    <link href="css/global/marginsPaddings.css" rel="stylesheet">
+    <link href="css/global/modals.css" rel="stylesheet">
+    <link href="css/global/tables.css" rel="stylesheet">
+    <link href="css/global/typography.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="fonts/OpenSans/openSans.css" rel="stylesheet">
+    <link href="fonts/Roboto/roboto.css" rel="stylesheet">
+    <!-- Plugins -->
+    <!-- DataTable -->
+    <link rel="stylesheet" type="text/css" href="css/dataTables/datatables.min.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="masthead">
+                <h3 class="text-muted">Class Scheduling System</h3>
+                <nav>
+                    <ul class="nav nav-justified">
+                        <li class="active">
+                            <a href="#">Class Schedules</a>
+                        </li>
+                        <li>
+                            <a href="rawScoreManagement.html">Raw Score Management</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+    <div class="row m-t-lg">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <h3>Section List</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 m-t-lg">
+                    <a class="btn btn-md btn-info full-width" role="button" data-toggle="modal"
+                       data-target="#addSection">Add Section</a>
+                </div>
+            </div>
+            <div class="row m-t-lg">
+                <div class="col-lg-12">
+                    <table class="table table-bordered table-hover sections-table">
+                        <thead>
+                        <tr>
+                            <th>Program Code</th>
+                            <th>Program Title</th>
+                            <th>Section</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>BSIT</td>
+                            <td>Bachelor of Science in Information Technology</td>
+                            <td>4BSIT7A</td>
+                            <td>
+                                <button type="button" class="btn btn-info" data-toggle="modal"
+                                        data-target="#assignSubjects">Assign Subjects
+                                </button>
+                                <button type="button" class="btn btn-danger">Remove Section</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th>Program Code</th>
+                            <th>Program Title</th>
+                            <th>Section</th>
+                            <th></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Example row of columns -->
+    <!-- Site footer -->
+    <footer class="footer">
+        <p>&copy; Class Scheduling 2017</p>
+    </footer>
+</div>
+<!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.min.js"></script>
+<!-- addSection Start -->
+<div class="modal fade" id="addSection" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add Section</h4>
+            </div>
+            <div class="modal-body p-w-lg m-t-lg m-b-lg">
+                <form role="form">
+                    <div class="form-group">
+                        <label class="control-label">Program Code</label>
+                        <input id="program-code" type="text" class="form-control" list="program-codes">
+                        <datalist id="program-codes">
+                            <option>BSIT</option>
+                            <option>BSED</option>
+                            <option>BSHRM</option>
+                            <option>BSTM</option>
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Program Title</label>
+                        <input id="program-title" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Program Section</label>
+                        <select id="program-section" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" class="btn btn-info">Add Section</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- addSection End -->
+<!-- assignSubjects Start -->
+<div class="modal fade" id="assignSubjects" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Assign Subjects</h4>
+            </div>
+            <div class="modal-body p-w-lg m-t-lg m-b-lg">
+                <form role="form">
+                    <div class="form-group">
+                        <label class="control-label">Program Code</label>
+                        <input type="text" class="form-control" placeholder="Program Code" value="BSIT" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Program Title</label>
+                        <input type="text" class="form-control" placeholder="Program Title"
+                               value="Bachelor of Science in Information Technology" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Section</label>
+                        <input type="text" class="form-control" placeholder="Section" value="4BSIT7A" readonly>
+                    </div>
+                </form>
+                <hr class="line-dashed">
+                <form role="form">
+                    <h4 class="font-bold">Enroll Subjects</h4>
+                    <small><label class="alert alert-info">Hello, if you haven't yet enrolled the subjects, please
+                        kindly
+                        enroll the subjects appeared first.</label></small>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover enroll-subjects-table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input id="checkAll" type="checkbox">
+                                </th>
+                                <th>Subject Code</th>
+                                <th>Subject Title</th>
+                                <th>Units</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <input id="checkItem" type="checkbox">
+                                </td>
+                                <td>ALG-101</td>
+                                <td>College Algebra</td>
+                                <td>5</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="form-group text-right">
+                            <button id="uncheckAll" type="button" class="btn btn-danger">Uncheck All</button>
+                            <button type="button" class="btn btn-info">Assign Subjects</button>
+                        </div>
+                    </div>
+                </form>
+                <hr class="line-dashed">
+                <form role="form" id="validateSetSchedule">
+                    <h4 class="font-bold">Set Schedule</h4>
+                    <small><label class="alert alert-info">Hi again, please set the subject schedule and the instructor
+                        responsible for every subjects here.</label></small>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Subject Title</th>
+                                <th>Units</th>
+                                <th>Set Day</th>
+                                <th>Set Schedule</th>
+                                <th>Room</th>
+                                <th>Assign Instructor</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>ALG-101</td>
+                                <td>College Algebra</td>
+                                <td>5</td>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <select class="form-control" required>
+                                                <option></option>
+                                                <option>Monday</option>
+                                                <option>Tuesday</option>
+                                                <option>Wednesday</option>
+                                                <option>Thursday</option>
+                                                <option>Friday</option>
+                                                <option>Saturday</option>
+                                                <option>Sunday</option>
+                                            </select>
+                                            <span class="input-group-addon">to</span>
+                                            <select class="form-control" required>
+                                                <option></option>
+                                                <option>Monday</option>
+                                                <option>Tuesday</option>
+                                                <option>Wednesday</option>
+                                                <option>Thursday</option>
+                                                <option>Friday</option>
+                                                <option>Saturday</option>
+                                                <option>Sunday</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="time" class="form-control" name="scheduleBegin">
+                                            <span class="input-group-addon">to</span>
+                                            <input type="time" class="form-control" name="scheduleEnd">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" list="rooms" name="room">
+                                    <datalist id="rooms">
+                                        <option>GH - BLDG. B - ROOM 302</option>
+                                        <option>GH - BLDG. B - ROOM 303</option>
+                                        <option>GH - BLDG. B - ROOM 304</option>
+                                        <option>GH - BLDG. B - ROOM 305</option>
+                                        <option>GH - BLDG. B - ROOM 306</option>
+                                        <option>GH - BLDG. B - ROOM 307</option>
+                                        <option>GH - BLDG. B - ROOM 308</option>
+                                        <option>GH - BLDG. B - ROOM 309</option>
+                                        <option>GH - BLDG. B - ROOM 310</option>
+                                    </datalist>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" list="instructors" name="instructors">
+                                    <datalist id="instructors">
+                                        <option>Prof. Orain, Renjun</option>
+                                        <option>Prof. Calata, Brian</option>
+                                        <option>Prof. Marcelino, Kristine</option>
+                                        <option>Prof. Regencia, Ryan</option>
+                                    </datalist>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="form-group text-right">
+                            <button id="clearSetSchedule" type="button" class="btn btn-danger">Clear</button>
+                            <button id="setSchedule" type="submit" class="btn btn-info">Save</button>
+                        </div>
+                    </div>
+                </form>
+                <form role="form">
+                    <hr class="line-dashed">
+                    <h4 class="font-bold">Official Schedules</h4>
+                    <small><label class="alert alert-info">Yey, this is the latest schedules saved.</label></small>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover official-schedules-table">
+                            <thead>
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Subject Title</th>
+                                <th>Units</th>
+                                <th>Day</th>
+                                <th>Schedule</th>
+                                <th>Room</th>
+                                <th>Instructor</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>ALG-101</td>
+                                <td>College Algebra</td>
+                                <td>5</td>
+                                <td>Monday - Tuesday</td>
+                                <td>7:30 - 10:30</td>
+                                <td>GH - BLDG. B - ROOM 306</td>
+                                <td>Prof. Marcelino, Kristine</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#scheduleRemove">Remove
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- assignSubjects End -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Plugins -->
+<!-- DataTables -->
+<script type="text/javascript" src="js/dataTables/datatables.min.js"></script>
+<!-- Jquery Validate -->
+<script src="js/validate/jquery.validate.min.js"></script>
+<!-- Custom javaScripts -->
+<script src="js/customCheckbox.js"></script>
+<script src="js/addSection.js"></script>
+<script src="js/customModal.js"></script>
+<script src="js/validate.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.sections-table, .official-schedules-table').DataTable({
+            pageLength: 25,
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: []
+        });
+    });
+</script>
+</body>
+</html>
